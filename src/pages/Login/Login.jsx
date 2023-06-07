@@ -19,7 +19,7 @@ const Login = () => {
                             Email
                         </label>
                         <input
-                            className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700"
                             id="email"
                             type="email"
                             placeholder="Enter your email"
@@ -31,7 +31,7 @@ const Login = () => {
                         </label>
                         <div className="relative">
                             <input
-                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                className="appearance-none border rounded-md w-full py-2 px-3 text-gray-700"
                                 id="password"
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="Enter your password"
