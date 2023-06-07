@@ -1,5 +1,4 @@
 import React from 'react';
-import './Footer.css';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -22,7 +21,7 @@ const Footer = () => {
                         </div>
                         <div className="w-full md:w-1/4 mb-6 md:mb-0 italic">
                             <h4 className="text-lg text-black font-semibold mb-4">Address</h4>
-                            <p className="text-gray-600">5460 Kuptola,Mithapukur</p>
+                            <p className="text-gray-600">5460 Kuptola, Mithapukur</p>
                             <p className="text-gray-600">Gaibandha, Bangladesh</p>
                         </div>
                         <div className="w-full md:w-1/4 mb-6 md:mb-0">

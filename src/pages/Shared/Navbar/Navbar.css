@@ -1,0 +1,16 @@
+.navitem::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+    margin: auto;
+    display: block;
+}
+.navitem:hover::after {
+    width: 100%;
+    transition: width 0.3s linear;
+}
+.navitem{
+    text-transform: uppercase;
+    font-weight: 600;
+}
