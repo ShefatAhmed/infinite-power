@@ -8,6 +8,17 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const navItems = <>
+        <Link className="navitem" >Home</Link>
+        <Link className="navitem" >Instructors</Link>
+        <Link className="navitem" >Classes</Link>
+        <Link className="navitem" >Dashboard</Link>
+    </>
+    const authentication = <>
+        <button className="navitem"><Link to="/login">Login</Link></button>
+        <button className="navitem"><Link>LogOut</Link></button>
+    </>
     return (
         <nav className="shadow-md py-4 px-16">
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -18,10 +29,7 @@ const Navbar = () => {
                         </Link>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <Link className="navitem" >Home</Link>
-                                <Link className="navitem" >Instructors</Link>
-                                <Link className="navitem" >Classes</Link>
-                                <Link className="navitem" >Dashboard</Link>
+                                {navItems}
                             </div>
                         </div>
                     </div>
@@ -33,8 +41,7 @@ const Navbar = () => {
                                 src="https://scontent.fdac22-1.fna.fbcdn.net/v/t39.30808-6/328757685_5721952471193516_4000729686070616427_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lIjQ6847tjoAX8htcOh&_nc_ht=scontent.fdac22-1.fna&oh=00_AfDNn0Wj_E1lyU3JNQ3qbCYoynnB1p1y10diPQba6Hn9cg&oe=64849DBE"
                                 alt="Profile"
                             />
-                            <button className="navitem">Login</button>
-                            <button className="navitem">LogOut</button>
+                            {authentication}
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
@@ -69,10 +76,7 @@ const Navbar = () => {
             </div>
             <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <Link className="navitem" >Home</Link>
-                    <Link className="navitem" >Instructors</Link>
-                    <Link className="navitem" >Classes</Link>
-                    <Link className="navitem" >Dashboard</Link>
+                    {navItems}
                 </div>
                 <div className="flex ms-5">
                     <img
@@ -80,8 +84,7 @@ const Navbar = () => {
                         src="https://scontent.fdac22-1.fna.fbcdn.net/v/t39.30808-6/328757685_5721952471193516_4000729686070616427_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lIjQ6847tjoAX8htcOh&_nc_ht=scontent.fdac22-1.fna&oh=00_AfDNn0Wj_E1lyU3JNQ3qbCYoynnB1p1y10diPQba6Hn9cg&oe=64849DBE"
                         alt="Profile"
                     />
-                    <button className="navitem">Login</button>
-                    <button className="navitem">LogOut</button>
+                    {authentication}
                 </div>
             </div>
         </nav>
