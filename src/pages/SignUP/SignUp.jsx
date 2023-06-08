@@ -37,20 +37,18 @@ const SignUp = () => {
         createUser(email, password)
             .then((result) => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
                 form.reset();
                 setError("");
                 updateUserData(result.user, name, Img);
             })
             .catch((error) => {
-                console.log(error);
                 setError(error.message);
                 switch (error.code) {
-                    case "auth/email-already-in-use":
-                        setErrorMessage("The email address you entered is already in use.");
-                        break;
                     default:
                         setErrorMessage("Please provide valid data.");
+                        break;
+                    case "auth/email-already-in-use":
+                        setErrorMessage("The email address you entered is already in use.");
                         break;
                 }
             });
