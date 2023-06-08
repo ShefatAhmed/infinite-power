@@ -1,102 +1,120 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-        photoURL: '',
-    });
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
+    const [errorMessage, setErrorMessage] = useState(null);
+    const { createUser } = useContext(AuthContext);
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const Img = form.image.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
-            setError('Password fields do not match.');
+        if (password !== confirmPassword) {
+            setErrorMessage("Passwords do not match.");
             return;
         }
-        // Perform further form submission logic here
-        console.log('Form submitted:', formData);
-        setError('');
-    }
+        if (password.length < 6) {
+            setErrorMessage("Password must be at least 6 characters long.");
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            setErrorMessage("Password must contain at least one uppercase letter.");
+            return;
+        }
+        if (!/[!@#$%^&*()]/.test(password)) {
+            setErrorMessage("Password must contain at least one special character.");
+            return;
+        }
+
+        createUser(email, password)
+            .then((result) => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                form.reset();
+                setError("");
+                updateUserData(result.user, name, Img);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(error.message);
+                switch (error.code) {
+                    case "auth/email-already-in-use":
+                        setErrorMessage("The email address you entered is already in use.");
+                        break;
+                    default:
+                        setErrorMessage("Please provide valid data.");
+                        break;
+                }
+            });
+            setErrorMessage("");
+    };
+
+    const updateUserData = (user, name, Img) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: Img,
+        })
+            .then(() => { })
+            .catch((error) => {
+                console.log(error);
+                setError(error.message);
+            });
+    };
     return (
         <div className="flex justify-center items-center h-screen">
             <div className="bg-white p-12 md:w-4/12 shadow-2xl rounded-md">
                 <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-                {error && <p className="text-red-500 mb-2">{error}</p>}
+                {errorMessage && <p className="text-red-500 mb-2">{errorMessage}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block mb-2 font-bold">
-                            Name
-                        </label>
+                        <label className="block mb-2 font-bold">Name</label>
                         <input
                             type="text"
-                            id="name"
                             name="name"
-                            value={formData.name}
-                            onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 font-bold">
-                            Photo URL
-                        </label>
+                        <label className="block mb-2 font-bold">Photo URL</label>
                         <input
                             type="text"
-                            id="photoURL"
-                            name="photoURL"
-                            value={formData.photoURL}
-                            onChange={handleChange}
+                            name="image"
                             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 font-bold">
-                            Email
-                        </label>
+                        <label className="block mb-2 font-bold">Email</label>
                         <input
                             type="email"
-                            id="email"
                             name="email"
-                            value={formData.email}
-                            onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 font-bold">
-                            Password
-                        </label>
+                        <label className="block mb-2 font-bold">Password</label>
                         <input
                             type="password"
-                            id="password"
                             name="password"
-                            value={formData.password}
-                            onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                             required
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block mb-2 font-bold">
-                            Confirm Password
-                        </label>
+                        <label className="block mb-2 font-bold">Confirm Password</label>
                         <input
                             type="password"
-                            id="confirmPassword"
                             name="confirmPassword"
-                            value={formData.confirmPassword}
-                            onChange={handleChange}
                             className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
                             required
                         />
@@ -106,7 +124,14 @@ const SignUp = () => {
                             Sign Up
                         </button>
                     </div>
-                    <p><small>Allready have an account ? <Link to="/login" className='link'>Please Login</Link></small></p>
+                    <p>
+                        <small>
+                            Already have an account?{" "}
+                            <Link to="/login" className="link">
+                                Please Login
+                            </Link>
+                        </small>
+                    </p>
                 </form>
             </div>
         </div>

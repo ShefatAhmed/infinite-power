@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css';
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,15 +10,25 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const { user, logOut } = useContext(AuthContext);
+    const userSingout = () => {
+        logOut()
+            .then(result => { })
+            .catch(error => console.error(error));
+    }
+
     const navItems = <>
         <Link className="navitem" >Home</Link>
         <Link className="navitem" >Instructors</Link>
         <Link className="navitem" >Classes</Link>
-        <Link className="navitem" >Dashboard</Link>
+        {
+            user && <Link className="navitem" >Dashboard</Link>
+        }
     </>
     const authentication = <>
-        <button className="navitem"><Link to="/login">Login</Link></button>
-        <button className="navitem"><Link>LogOut</Link></button>
+        {
+            user ? (<button onClick={userSingout} className="navitem">LogOut</button>) : (<button className="navitem"><Link to="/login">Login</Link></button>)
+        }
     </>
     return (
         <nav className="shadow-md py-4 px-16">
@@ -36,11 +47,13 @@ const Navbar = () => {
                     <Link to='/'><h1 className="md:hidden text-lg font-bold uppercase text-red-500"><span className='text-indigo-700 font-bold'>Infinite</span>Power</h1></Link>
                     <div className="hidden md:block">
                         <div className="flex">
-                            <img
-                                className="h-10 w-10 rounded-full object-cover me-5"
-                                src="https://scontent.fdac22-1.fna.fbcdn.net/v/t39.30808-6/328757685_5721952471193516_4000729686070616427_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lIjQ6847tjoAX8htcOh&_nc_ht=scontent.fdac22-1.fna&oh=00_AfDNn0Wj_E1lyU3JNQ3qbCYoynnB1p1y10diPQba6Hn9cg&oe=64849DBE"
-                                alt="Profile"
-                            />
+                            {
+                                user && <img
+                                    className="h-10 w-10 rounded-full object-cover me-5"
+                                    src={user.photoURL}
+                                    alt="Profile"
+                                />
+                            }
                             {authentication}
                         </div>
                     </div>
@@ -79,11 +92,13 @@ const Navbar = () => {
                     {navItems}
                 </div>
                 <div className="flex ms-5">
-                    <img
-                        className="h-8 w-8 rounded-full object-cover me-5"
-                        src="https://scontent.fdac22-1.fna.fbcdn.net/v/t39.30808-6/328757685_5721952471193516_4000729686070616427_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lIjQ6847tjoAX8htcOh&_nc_ht=scontent.fdac22-1.fna&oh=00_AfDNn0Wj_E1lyU3JNQ3qbCYoynnB1p1y10diPQba6Hn9cg&oe=64849DBE"
-                        alt="Profile"
-                    />
+                    {
+                        user && <img
+                            className="h-8 w-8 rounded-full object-cover me-5"
+                            src={user.photoURL}
+                            alt="Profile"
+                        />
+                    }
                     {authentication}
                 </div>
             </div>
