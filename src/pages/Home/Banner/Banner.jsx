@@ -19,7 +19,7 @@ const Banner = () => {
         });
     }, []);
     return (
-        <div className='px-5 py-3'>
+        <div>
             <div className="swiper">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide flex flex-col justify-center items-center text-center relative">
@@ -62,7 +62,6 @@ const Banner = () => {
                 <div className="swiper-scrollbar"></div>
             </div>
         </div>
-
     );
 };
 
