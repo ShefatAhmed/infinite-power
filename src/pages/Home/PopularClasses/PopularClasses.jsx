@@ -12,7 +12,7 @@ const PopularClasses = () => {
             .catch((error) => console.log(error));
     }, []);
     return (
-        <div className='bg-gray-200 py-8'>
+        <div className='bg-gray-200 pt-20 pb-8'>
             <div className="text-center py-1">
                 <h2 className="text-3xl font-bold mb-1 uppercase">Popular Class</h2>
                 <p className="text-lg font-bold text-gray-500 mb-8 md:px-0 px-8">Learn the fundamentals of self-defense and build your strength and agility in our Popular Class</p>
