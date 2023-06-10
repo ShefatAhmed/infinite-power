@@ -18,11 +18,11 @@ const Navbar = () => {
     }
 
     const navItems = <>
-        <Link className="navitem" >Home</Link>
-        <Link className="navitem" >Instructors</Link>
-        <Link className="navitem" >Classes</Link>
+        <Link to="/" className="navitem" >Home</Link>
+        <Link to="/instructors" className="navitem" >Instructors</Link>
+        <Link to="/classes" className="navitem" >Classes</Link>
         {
-            user && <Link className="navitem" >Dashboard</Link>
+            user && <Link to="/dashboard" className="navitem" >Dashboard</Link>
         }
     </>
     const authentication = <>
