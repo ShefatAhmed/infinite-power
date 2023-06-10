@@ -8,7 +8,6 @@ const Instructors = () => {
             .then((res) => res.json())
             .then((data) => {
                 setinstructors(data);
-                console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
@@ -18,7 +17,7 @@ const Instructors = () => {
             <div className="flex flex-wrap justify-center">
                 {instructors.map((instructor) => (
                     <div
-                        key={instructor.id}
+                        key={instructor._id}
                         className="w-full max-w-md rounded-lg overflow-hidden shadow-lg bg-white m-4"
                     >
                         <div className="flex items-center p-4">
