@@ -19,7 +19,7 @@ const PopularInstractor = () => {
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6">
                 {popularInstractor.slice(0, 6).map((instructor) => (
-                    <div key={instructor.id} className="flex flex-col items-center">
+                    <div key={instructor._id} className="flex flex-col items-center">
                         <div className="w-48 h-48 bg-gray-300 overflow-hidden rounded">
                             <img src={instructor.image} alt={instructor.name} className="w-full h-full object-cover" />
                         </div>
