@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ClassesPage = ({ classItem }) => {
-    const { name, image, price, _id } = classItem;
+    const { name, image, Price, _id } = classItem;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -13,7 +13,7 @@ const ClassesPage = ({ classItem }) => {
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {
-            const selectedClass = { selectedClassId: _id, name, image, price, email: user.email }
+            const selectedClass = { selectedClassId: _id, name, image, Price, email: user.email }
             fetch('http://localhost:5000/selectedClass', {
                 method: 'POST',
                 headers: {

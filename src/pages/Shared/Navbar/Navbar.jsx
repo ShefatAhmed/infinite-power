@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/instructors" className="navitem" >Instructors</Link>
         <Link to="/classes" className="navitem" >Classes</Link>
         {
-            user && <Link to="/dashboard" className="navitem" >Dashboard</Link>
+            user && <Link to="/dashboard/studentDashboard" className="navitem" >Dashboard</Link>
         }
     </>
     const authentication = <>
