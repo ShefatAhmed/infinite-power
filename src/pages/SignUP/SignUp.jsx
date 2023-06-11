@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const [error, setError] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,6 +42,38 @@ const SignUp = () => {
                 form.reset();
                 setError("");
                 updateUserData(result.user, name, Img);
+
+                const saveUser = {
+                    name: name,
+                    email: email,
+                    image: Img
+                };
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            form.reset();
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Signup completed successfully.',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/');
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        setError("An error occurred while saving user data.");
+                    });
             })
             .catch((error) => {
                 setError(error.message);
@@ -52,7 +86,7 @@ const SignUp = () => {
                         break;
                 }
             });
-            setErrorMessage("");
+        setErrorMessage("");
     };
 
     const updateUserData = (user, name, Img) => {
