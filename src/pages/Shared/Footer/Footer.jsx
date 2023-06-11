@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap">
                         <div className="w-full md:w-1/4 mb-6 md:mb-0">
-                            <h1 className="text-lg font-bold text-center uppercase text-red-500"><span className='text-indigo-700 font-bold'>Infinite</span>Power</h1>
+                            <h1 className="text-lg font-bold text-center uppercase text-gray-700">Infinite Power</h1>
                             <img src="https://i.ibb.co/D1wRtGJ/pngkey-com-karate-silhouette-png-3209052.png" alt="" className='w-1/5 mx-auto' />
                         </div>
                         <div className="w-full md:w-1/4 mb-6 md:mb-0 italic">

@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
-
-const StudentDashboard = () => {
-    const { user } = useContext(AuthContext);
+import React from 'react';
+import useAuth from '../../hooks/useAuth';
+const DashBoardHome = () => {
+    const { user } = useAuth();
     return (
         <div className='flex items-center justify-center gap-3 mt-24'>
             <div>
@@ -16,4 +15,4 @@ const StudentDashboard = () => {
     );
 };
 
-export default StudentDashboard;
+export default DashBoardHome;

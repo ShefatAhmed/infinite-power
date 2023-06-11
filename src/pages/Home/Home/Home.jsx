@@ -6,7 +6,7 @@ import ExtraSection from '../ExtraSection/ExtraSection';
 
 const Home = () => {
     return (
-        <div>
+        <div className='max-w-screeen'>
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <PopularInstractor></PopularInstractor>

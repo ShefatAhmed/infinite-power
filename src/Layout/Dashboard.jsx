@@ -14,13 +14,14 @@ const Dashboard = () => {
             <div className='bg-gradient-to-r from-purple-300 py-8 border-b-4 border-fuchsia-800'>
                 <div className='flex items-center justify-around'>
                     <h1 className='text-3xl font-bold uppercase text-white'>DashBoard</h1>
-                    <h1 className="text-lg font-bold uppercase text-red-500"><span className='text-indigo-700 font-bold'>Infinite</span>Power</h1>
+                    <h1 className="text-lg font-bold uppercase text-gray-700">Infinite Power</h1>
                 </div>
                 <div className='flex justify-around font-bold uppercase mt-8'>
                     <div className='flex gap-3'>
                         <Link to="/dashboard/selectedClass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Selected Classes</Link>
                         <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
                         <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
+                        <Link to="/dashboard/manageUser" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Users</Link>
                     </div>
                     <Link onClick={userSingout} className='bg-red-500 btn-glass text-white px-4 py-1 rounded'>LogOut</Link>
                 </div>

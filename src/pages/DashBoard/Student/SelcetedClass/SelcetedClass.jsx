@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../Providers/AuthProvider';
+import React, {  useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth';
 
 const SelcetedClass = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [selectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/selectedClass/${user?.email}`)

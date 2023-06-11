@@ -8,10 +8,11 @@ import SignUp from "../pages/SignUP/SignUp";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import PrivateRoutes from "./PrivateRoutes";
-import StudentDashboard from "../pages/DashBoard/StudentDashboard/StudentDashboard";
 import Dashboard from "../Layout/Dashboard";
-import SelcetedClass from "../pages/DashBoard/SelcetedClass/SelcetedClass";
-import Pay from "../pages/DashBoard/Pay/Pay"
+import SelcetedClass from "../pages/DashBoard/Student/SelcetedClass/SelcetedClass";
+import Pay from "../pages/DashBoard/Student/Pay/Pay";
+import ManageUser from "../pages/DashBoard/Admin/ManageUser/ManageUser";
+import DashBoardHome from "../pages/DashBoard/DashBoardHome";
 
 export const router = createBrowserRouter([
     {
@@ -45,16 +46,20 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             {
-                path: 'studentDashboard',
-                element: <StudentDashboard></StudentDashboard>
+                path: 'dashboardhome',
+                element: <DashBoardHome></DashBoardHome>
+            },
+            {
+                path: 'selectedClass',
+                element: <SelcetedClass></SelcetedClass>
             },
             {
                 path: 'pay',
                 element: <Pay></Pay>
             },
             {
-                path: 'selectedClass',
-                element: <SelcetedClass></SelcetedClass>
+                path: 'manageUser',
+                element: <ManageUser></ManageUser>
             }
         ]
     }

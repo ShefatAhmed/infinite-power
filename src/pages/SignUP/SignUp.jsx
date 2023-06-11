@@ -39,6 +39,7 @@ const SignUp = () => {
         createUser(email, password)
             .then((result) => {
                 const loggedUser = result.user;
+                console.log(loggedUser);
                 form.reset();
                 setError("");
                 updateUserData(result.user, name, Img);
@@ -46,7 +47,8 @@ const SignUp = () => {
                 const saveUser = {
                     name: name,
                     email: email,
-                    image: Img
+                    image: Img,
+                    "role": "Student"
                 };
 
                 fetch('http://localhost:5000/users', {

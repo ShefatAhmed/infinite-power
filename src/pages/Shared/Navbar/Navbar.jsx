@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to="/instructors" className="navitem" >Instructors</Link>
         <Link to="/classes" className="navitem" >Classes</Link>
         {
-            user && <Link to="/dashboard/studentDashboard" className="navitem" >Dashboard</Link>
+            user && <Link to="/dashboard/dashboardhome" className="navitem" >Dashboard</Link>
         }
     </>
     const authentication = <>
@@ -44,7 +44,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <Link to='/'><h1 className="md:hidden text-lg font-bold uppercase text-red-500"><span className='text-indigo-700 font-bold'>Infinite</span>Power</h1></Link>
+                    <Link to='/'><h1 className="md:hidden text-lg font-bold uppercase text-gray-700">Infinite Power</h1></Link>
                     <div className="hidden md:block">
                         <div className="flex">
                             {

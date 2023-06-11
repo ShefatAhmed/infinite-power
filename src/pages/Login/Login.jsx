@@ -12,48 +12,57 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    const userSignIn = event => {
+    const userSignIn = async (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        signIn(email, password)
-            .then(result => {
-                const loggedUser = result.user;
-                form.reset();
-                setError('')
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                setError(error.message)
-                switch (error.code) {
-                    case 'auth/invalid-email':
-                        setErrorMessage('Please provide a valid email address.');
-                        break;
-                    default:
-                        setErrorMessage('Please provide valid email and password.');
-                        break;
-                }
-            })
-    }
-    const GoogleLogin = () => {
-        signInWithGoogle()
-            .then(result => {
-                const loggedUser = result.user;
-                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL }
-                fetch('http://localhost:5000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(saveUser)
-                })
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
+
+        try {
+            const result = await signIn(email, password);
+            const loggedUser = result.user;
+            form.reset();
+            setError('');
+            navigate(from, { replace: true });
+        } catch (error) {
+            setError(error.message);
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    setErrorMessage('Please provide a valid email address.');
+                    break;
+                case 'auth/user-disabled':
+                    setErrorMessage('Your account has been disabled.');
+                    break;
+                case 'auth/user-not-found':
+                    setErrorMessage('User not found. Please check your email or sign up for a new account.');
+                    break;
+                case 'auth/wrong-password':
+                    setErrorMessage('Incorrect password. Please try again.');
+                    break;
+                default:
+                    setErrorMessage('An error occurred. Please try again later.');
+                    break;
+            }
+        }
+    };
+    const GoogleLogin = async () => {
+        try {
+            const result = await signInWithGoogle();
+            const loggedUser = result.user;
+            const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL, "role": "Student" };
+            await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            });
+            navigate(from, { replace: true });
+        } catch (error) {
+            console.log(error);
+            setErrorMessage('An error occurred. Please try again later.');
+        }
+    };
     const handlePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
