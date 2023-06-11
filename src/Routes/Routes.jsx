@@ -11,6 +11,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import StudentDashboard from "../pages/DashBoard/StudentDashboard/StudentDashboard";
 import Dashboard from "../Layout/Dashboard";
 import SelcetedClass from "../pages/DashBoard/SelcetedClass/SelcetedClass";
+import Pay from "../pages/DashBoard/Pay/Pay"
 
 export const router = createBrowserRouter([
     {
@@ -44,12 +45,12 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             {
-                path: 'home',
-                element: <Home></Home>
-            },
-            {
                 path: 'studentDashboard',
                 element: <StudentDashboard></StudentDashboard>
+            },
+            {
+                path: 'pay',
+                element: <Pay></Pay>
             },
             {
                 path: 'selectedClass',
