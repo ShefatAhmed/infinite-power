@@ -11,9 +11,9 @@ const AddClasses = () => {
         const image = form.image.value;
         const instructor_name = user.displayName;
         const instructor_email = user.email;
-        const Available_seats = form.Available_seats.value;
-        const Price = form.Price.value;
-        const newClass = {name, image,  instructor_name, instructor_email, Available_seats, Price, Status: "pending"};
+        const Available_seats = parseFloat(form.Available_seats.value);
+        const Price = parseFloat(form.Price.value);
+        const newClass = {image, name, instructor_name, instructor_email, number_of_student : 0, Available_seats, Price, Status: "pending", feedback: "pending" };
 
         fetch('http://localhost:5000/classes', {
             method: 'POST',

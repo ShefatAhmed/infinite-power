@@ -70,6 +70,7 @@ const Login = () => {
         <div className="flex justify-center items-center h-screen">
             <div className="bg-white p-12 md:w-4/12 shadow-2xl rounded-md">
                 <h2 className="text-2xl font-bold mb-4">Login</h2>
+                <p className='my-1 text-red-500'>{errorMessage}</p>
                 <form onSubmit={userSignIn}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">

@@ -3,15 +3,13 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
-import useInstructor from '../../hooks/useInstructor';
 
 const ClassesPage = ({ classItem }) => {
     const { name, image, Price, _id } = classItem;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
     const isAdmin = useAdmin();
-    const isInstructor = useInstructor();
+    const location = useLocation();
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {
@@ -69,7 +67,7 @@ const ClassesPage = ({ classItem }) => {
                 <button
                     onClick={() => handleSelectClass(classItem)}
                     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 rounded-full uppercase text-bold"
-                    disabled={classItem.Available_seats === 0 || (isAdmin || isInstructor)}
+                    disabled={isAdmin || classItem.Available_seats === 0}
                 >
                     Select The Class
                 </button>

@@ -14,7 +14,10 @@ import Pay from "../pages/DashBoard/Student/Pay/Pay";
 import ManageUser from "../pages/DashBoard/Admin/ManageUser/ManageUser";
 import DashBoardHome from "../pages/DashBoard/DashBoardHome";
 import AdminRoutes from "./AdminRoutes";
+import InstructorRoutes from "./InstructorRoutes";
 import AddClasses from "../pages/DashBoard/Instructor/AddClasses/AddClasses";
+import MyClasses from "../pages/DashBoard/Instructor/MyClasses/MyClasses";
+import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +69,14 @@ export const router = createBrowserRouter([
             {
                 path: 'addclass',
                 element: <AddClasses></AddClasses>
+            },
+            {
+                path: 'myclasses',
+                element: <InstructorRoutes><MyClasses></MyClasses></InstructorRoutes>
+            },
+            {
+                path:  'manageclasses',
+                element: <AdminRoutes><ManageClasses></ManageClasses></AdminRoutes>
             }
         ]
     }

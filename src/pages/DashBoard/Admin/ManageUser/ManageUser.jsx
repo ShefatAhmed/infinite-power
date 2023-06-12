@@ -65,7 +65,7 @@ const ManageUser = () => {
                             alt="User Avatar"
                         />
                         <div className="text-center">
-                            <p className="text-gray-500 mb-2">{user.role}</p>
+                            <p className="text-gray-500 mb-2">Role: {user.role}</p>
                         </div>
                         <h2 className="text-lg font-semibold mb-2">{user.name}</h2>
                         <p className="text-gray-500 mb-4">{user.email}</p>
