@@ -2,14 +2,16 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const ClassesPage = ({ classItem }) => {
     const { name, image, Price, _id } = classItem;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const isAdmin = user && user.isAdmin;
-    const isInstructor = user && user.isInstructor;
+    const isAdmin = useAdmin();
+    const isInstructor = useInstructor();
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {

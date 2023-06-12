@@ -8,7 +8,8 @@ const Classes = () => {
         fetch('http://localhost:5000/classes')
             .then((res) => res.json())
             .then((data) => {
-                setClasses(data);
+                const filteredData = data.filter((classItem) => classItem.Status === "approve");
+                setClasses(filteredData);
             })
             .catch((error) => console.log(error));
     }, []);

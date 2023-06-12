@@ -14,9 +14,9 @@ const Dashboard = () => {
     }
     return (
         <div>
-            <div className='bg-gradient-to-r from-purple-300 py-8 border-b-4 border-fuchsia-800'>
+            <div className='bg-gradient-to-r from-purple-100 py-8 border-b-2 border-fuchsia-800 shadow-lg'>
                 <div className='flex items-center justify-around'>
-                    <h1 className='text-3xl font-bold uppercase text-white'>DashBoard</h1>
+                    <Link to="dashboardhome"><h1 className='text-3xl font-bold uppercase text-white bg-sky-400 py-1 px-2 rounded-full'>DashBoard</h1></Link>
                     <h1 className="text-lg font-bold uppercase text-gray-700">Infinite Power</h1>
                 </div>
                 <div className='flex justify-around font-bold uppercase mt-8'>
