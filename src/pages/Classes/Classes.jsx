@@ -9,7 +9,6 @@ const Classes = () => {
             .then((res) => res.json())
             .then((data) => {
                 setClasses(data);
-                console.log(data);
             })
             .catch((error) => console.log(error));
     }, []);
@@ -19,6 +18,7 @@ const Classes = () => {
             {
                 classes.map(classItem => <div
                     className={`w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-4`}
+                    key={classItem._id}
                 ><ClassesPage
                     key={classItem._id}
                     classItem={classItem}>

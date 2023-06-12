@@ -1,28 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=YourCalligraphyFont&display=swap');
-
 .swiper-pagination-bullet {
     background-color: rgb(255, 255, 255);
     width: 20px;
     height: 20px;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-    color: rgb(32, 1, 1);
-    font-weight: bolder;
-}
 
 .text-radiant {
     color: #ffffff;
     font-weight: 900;
-    font-family: 'YourCalligraphyFont', cursive;
 }
 
 .bg-items {
     background-color: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(11px);
+    backdrop-filter: blur(1px);
 }
 .bg-items2 {
     background-color: rgba(255, 196, 196, 0.25);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(1px);
 }

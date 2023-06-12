@@ -8,10 +8,6 @@ const Banner = () => {
     useEffect(() => {
         const swiper = new Swiper('.swiper', {
             modules: [Navigation, Pagination],
-            navigation: {
-                prevEl: '.swiper-button-prev',
-                nextEl: '.swiper-button-next',
-            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,

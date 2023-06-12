@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../Providers/AuthProvider';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
+import useAuth from '../hooks/useAuth';
+import useInstructor from '../hooks/useInstructor';
 
 const Dashboard = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const { user, logOut } = useAuth();
     const userSingout = () => {
         logOut()
             .then(result => { })
@@ -21,7 +24,16 @@ const Dashboard = () => {
                         <Link to="/dashboard/selectedClass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Selected Classes</Link>
                         <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
                         <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
-                        <Link to="/dashboard/manageUser" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Users</Link>
+                        {
+                            isAdmin && <>
+                            <Link to="/dashboard/manageUser" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Users</Link>
+                            </>
+                        }
+                        {
+                            isInstructor && <>
+                            <Link to="/dashboard/addclass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Add Classes</Link>
+                            </>
+                        }
                     </div>
                     <Link onClick={userSingout} className='bg-red-500 btn-glass text-white px-4 py-1 rounded'>LogOut</Link>
                 </div>

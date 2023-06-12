@@ -17,7 +17,7 @@ const PopularClasses = () => {
                 <h2 className="text-3xl font-bold mb-1 uppercase underline text-gray-400">Popular Class</h2>
                 <p className="text-lg font-bold text-gray-500 mb-8 md:px-0 px-8">Learn the fundamentals of self-defense and build your strength and agility in our Popular Class</p>
             </div>
-            <div className='flex flex-wrap -mx-4 px-16'>
+            <div className='flex flex-wrap px-16'>
                 {popularClasses.slice(0, 6).map((classItem) => (
                     <div
                         className='w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4'
