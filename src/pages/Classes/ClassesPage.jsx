@@ -3,13 +3,16 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
+import useInstructor from '../../hooks/useInstructor';
 
 const ClassesPage = ({ classItem }) => {
     const { name, image, Price, _id } = classItem;
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const isAdmin = useAdmin();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const location = useLocation();
+  
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {
@@ -49,9 +52,11 @@ const ClassesPage = ({ classItem }) => {
             })
         }
     }
+
+    const isButtonDisabled = isAdmin || isInstructor || classItem.Available_seats === 0; // Include isInstructor in the condition
+
     return (
-        <div className={`rounded-lg shadow-lg h-96 overflow-hidden flex flex-col ${classItem.Available_seats === 0 ? 'bg-red-300' : 'bg-white'
-            }`}>
+        <div className={`rounded-lg shadow-lg h-96 overflow-hidden flex flex-col ${classItem.Available_seats === 0 ? 'bg-red-300' : 'bg-white'}`}>
             <img
                 className="w-full h-40 object-cover object-center"
                 src={classItem.image}
@@ -67,7 +72,7 @@ const ClassesPage = ({ classItem }) => {
                 <button
                     onClick={() => handleSelectClass(classItem)}
                     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 rounded-full uppercase text-bold"
-                    disabled={isAdmin || classItem.Available_seats === 0}
+                    disabled={isButtonDisabled}
                 >
                     Select The Class
                 </button>
