@@ -1,9 +1,29 @@
-import React from 'react';
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import PayForm from "./PayForm";
+const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Pay = () => {
+    const { id } = useParams();
+    const { user } = useAuth();
+    const [selectedClasses, setSelectedClasses] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/selectedClass/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const filteredData = data.filter((item) => item._id === id);
+                setSelectedClasses(filteredData);
+            });
+    }, [user]);
+    const Price = selectedClasses.reduce((sum, item) => sum + item.Price, 0);
     return (
         <div>
-            <h1>pay</h1>
+            <Elements stripe={stripePromise}>
+                <PayForm selectedClasses={selectedClasses} Price={Price}></PayForm>
+            </Elements>
         </div>
     );
 };

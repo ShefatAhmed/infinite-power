@@ -18,7 +18,6 @@ import InstructorRoutes from "./InstructorRoutes";
 import AddClasses from "../pages/DashBoard/Instructor/AddClasses/AddClasses";
 import MyClasses from "../pages/DashBoard/Instructor/MyClasses/MyClasses";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
-
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -59,7 +58,7 @@ export const router = createBrowserRouter([
                 element: <SelcetedClass></SelcetedClass>
             },
             {
-                path: 'pay',
+                path: 'pay/:id',
                 element: <Pay></Pay>
             },
             {

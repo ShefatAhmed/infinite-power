@@ -6,6 +6,7 @@ import useAuth from '../../../../hooks/useAuth';
 const SelcetedClass = () => {
     const { user } = useAuth();
     const [selectedClasses, setSelectedClasses] = useState([]);
+    const total = selectedClasses.reduce((sum, item) => item.Price + sum, 0);
     useEffect(() => {
         fetch(`http://localhost:5000/selectedClass/${user?.email}`)
             .then((res) => res.json())
@@ -39,6 +40,7 @@ const SelcetedClass = () => {
     };
     return (
         <div className="flex flex-col items-center my-16">
+            <h1>price ${total}</h1>
             <h1 className="text-2xl font-bold my-4 uppercase">All the classes you have selected are shown here</h1>
             <div className='w-10/12'>
                 {selectedClasses.map((classItem) => (
@@ -57,7 +59,7 @@ const SelcetedClass = () => {
                             <p className="text-gray-500">Email: {classItem.email}</p>
                         </div>
                         <div className='flex gap-4'>
-                            <Link to="/dashboard/pay" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white font-bold py-2 px-8 rounded">
+                            <Link to={`/dashboard/pay/${classItem._id}`} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white font-bold py-2 px-8 rounded">
                                 Pay
                             </Link>
                             <button onClick={() => handleDelete(classItem._id)} className="bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">

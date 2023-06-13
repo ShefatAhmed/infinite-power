@@ -16,7 +16,7 @@ const ClassesPage = ({ classItem }) => {
     const handleSelectClass = classItem => {
         console.log(classItem);
         if (user && user.email) {
-            const selectedClass = { selectedClassId: _id, name, image, Price, email: user.email }
+            const selectedClass = { selectedClassId: _id, name, image, Price, email: user.email, payment: "pending" }
             fetch('http://localhost:5000/selectedClass', {
                 method: 'POST',
                 headers: {
@@ -53,7 +53,7 @@ const ClassesPage = ({ classItem }) => {
         }
     }
 
-    const isButtonDisabled = isAdmin || isInstructor || classItem.Available_seats === 0; // Include isInstructor in the condition
+    const isButtonDisabled = isAdmin || isInstructor || classItem.Available_seats === 0;
 
     return (
         <div className={`rounded-lg shadow-lg h-96 overflow-hidden flex flex-col ${classItem.Available_seats === 0 ? 'bg-red-300' : 'bg-white'}`}>

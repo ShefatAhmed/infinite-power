@@ -21,9 +21,9 @@ const Banner = () => {
                 <div className="swiper-slide flex flex-col justify-center items-center text-center relative">
                     <div className="slide-content absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2  bg-items p-5 rounded">
                         <h5 className="text-xl text-radiant font-bold uppercase">Welcome, learn about our work style</h5>
-                        <p className='text-left'><span className='font-bold'>Teaching Session:</span> Infinite Power Martial Arts School operates exclusively during the summer, offering a concentrated training experience for students.
+                        <p className='text-left text-white'><span className='font-bold text-black'>Teaching Session:</span> Infinite Power Martial Arts School operates exclusively during the summer, offering a concentrated training experience for students.
                         </p>
-                        <p className="text-sm text-left"> <span className='font-bold'>Message:</span> Unleash your inner warrior this summer at InfinitePower Martial Arts School. Empowerment, discipline, and growth await students of all ages. Join us for a transformative martial arts experience!
+                        <p className="text-sm text-left text-white"> <span className='font-bold text-black'>Message:</span> Unleash your inner warrior this summer at InfinitePower Martial Arts School. Empowerment, discipline, and growth await students of all ages. Join us for a transformative martial arts experience!
                         </p>
                     </div>
                     <img src="https://i.ibb.co/8YMYN9t/lc-Pd1-Un-PRdu3-FOLwk-NHW-stock-photo-small-group-of-kids-in-doboks-practicing-with-their-trainers-t.jpg" alt="Banner Image" className="w-full h-96" />

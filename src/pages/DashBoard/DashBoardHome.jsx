@@ -5,7 +5,7 @@ const DashBoardHome = () => {
     return (
         <div className='flex items-center justify-center gap-3 mt-24'>
             <div>
-                <img className='w-80 h-80 rounded-lg' src={user.photoURL} alt="" />
+                <img className='w-80 h-80 shadow-lg rounded-lg' src={user.photoURL} alt="" />
             </div>
             <div>  
             <h1 className='text-4xl font-bold uppercase'>{user.displayName}</h1>
