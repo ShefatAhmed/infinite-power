@@ -59,7 +59,7 @@ const ClassesPage = ({ classItem }) => {
             />
             <div className="flex-grow p-4">
                 <h3 className="text-lg font-medium text-gray-800">{classItem.name}</h3>
-                <p className="text-gray-600">Instructor: {classItem.instructor}</p>
+                <p className="text-gray-600">Instructor: {classItem.instructor_name}</p>
                 <p className="text-gray-600">Available Seats: {classItem.Available_seats}</p>
                 <p className="text-gray-600">Price: ${classItem.Price}</p>
             </div>
