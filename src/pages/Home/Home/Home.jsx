@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../Banner/Banner';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstractor from '../../PopularInstractor/PopularInstractor';

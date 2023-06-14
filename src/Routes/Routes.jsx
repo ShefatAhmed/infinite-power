@@ -20,6 +20,7 @@ import MyClasses from "../pages/DashBoard/Instructor/MyClasses/MyClasses";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
 import EnrolledClasses from "../pages/DashBoard/Student/EnrolledClass/EnrolledClasses";
 import PaymentHistory from "../pages/DashBoard/Student/Pay/PaymentHistory";
+import Erropage from "../Components/Errorpage/Erropage";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -88,5 +89,9 @@ export const router = createBrowserRouter([
                 element: <PaymentHistory></PaymentHistory>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <Erropage></Erropage>
     }
 ]);

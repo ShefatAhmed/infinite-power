@@ -25,7 +25,7 @@ const EnrolledClasses = () => {
                                 <img src={enrolledClass.image} alt="" className="w-16 h-16" />
                             </div>
                             <div>
-                                <h1 className='text-xs font-bold text-sky-500'>paid</h1>
+                                <h1 className='text-xs font-bold text-sky-500'>{enrolledClass.payment}</h1>
                             </div>
                             <div className='w-96'>
                                 <h2 className="text-xl font-bold">{enrolledClass.name}</h2>

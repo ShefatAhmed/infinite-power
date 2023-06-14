@@ -12,7 +12,7 @@ const PopularInstractor = () => {
             .catch((error) => console.log(error));
     }, []);
     return (
-        <div className='bg-gray-200 pt-8 pb-20'>
+        <div className='pt-8'>
             <div className="text-center py-1">
                 <h2 className="text-3xl font-bold mb-1 uppercase underline text-gray-400">Popular Instractor</h2>
                 <p className="text-lg font-bold text-gray-500 mb-8 md:px-0 px-5">Infinite Power Martial Arts School houses certified instructors with vast expertise and exceptional qualifications</p>

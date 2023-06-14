@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  transition: 0.5s;
+}
+
+.container:hover .box {
+  opacity: 0.1;
+  transform: scale(0.9);
+  filter: blur(5px);
+}
+
+.container .box:hover {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.container .box:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  filter: url(#wavy);
+}
+
+.container .box:nth-child(1):before {
+  background: #f3f3f3;
+}
+
+.container .box:nth-child(2):before {
+  background: #fff;
+}
+
+.container .box:nth-child(3):before {
+  background: #0f0;
+}
+
+.container .box .content {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  color: #111;
+  transition: 0.5s;
+}
+
+.container .box .content h1 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.container .box .content p {
+  font-size: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+}

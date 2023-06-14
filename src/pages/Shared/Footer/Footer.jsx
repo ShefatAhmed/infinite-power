@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div>
             <footer style={{ backgroundImage: `url(${backgroundImage})` }}  className="bg-gray-200 pt-16 pb-24">
-                <div className="container mx-auto px-4">
+                <div className=" mx-auto px-4">
                     <div className="flex flex-wrap">
                         <div className="w-full md:w-1/4 mb-6 md:mb-0">
                             <h1 className="text-lg font-bold text-center uppercase text-gray-700">Infinite Power</h1>
