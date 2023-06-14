@@ -4,7 +4,7 @@ const PopularInstractor = () => {
     const [popularInstractor, setPopularInstractor] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/popularInstractor')
+        fetch('https://summer-camp-server-silk.vercel.app/popularInstractor')
             .then((res) => res.json())
             .then((data) => {
                 setPopularInstractor(data);

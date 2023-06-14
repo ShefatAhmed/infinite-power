@@ -34,8 +34,8 @@ const Dashboard = () => {
                             !(isAdmin || isInstructor) && (
                                 <>
                                     <Link to="/dashboard/selectedClass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Selected Classes</Link>
-                                    <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
-                                    <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
+                                    <Link to="/dashboard/myenrolledclass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
+                                    <Link to="/dashboard/paymenthistory" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
                                 </>
                             )
                         }

@@ -8,7 +8,7 @@ const ManageClasses = () => {
     const [feedbackText, setFeedbackText] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://summer-camp-server-silk.vercel.app/classes')
             .then((res) => res.json())
             .then((data) => {
                 const filteredData = data.filter((classItem) => classItem.added_by === 'instructor');
@@ -29,7 +29,7 @@ const ManageClasses = () => {
         });
         setClasses(updatedClasses);
 
-        fetch(`http://localhost:5000/classes/approve/${classId}`, {
+        fetch(`https://summer-camp-server-silk.vercel.app/classes/approve/${classId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ const ManageClasses = () => {
         });
         setClasses(updatedClasses);
 
-        fetch(`http://localhost:5000/classes/deny/${classId}`, {
+        fetch(`https://summer-camp-server-silk.vercel.app/classes/deny/${classId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -109,7 +109,7 @@ const ManageClasses = () => {
             });
             setClasses(updatedClasses);
 
-            fetch(`http://localhost:5000/classes/feedback/${classId}`, {
+            fetch(`https://summer-camp-server-silk.vercel.app/classes/feedback/${classId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

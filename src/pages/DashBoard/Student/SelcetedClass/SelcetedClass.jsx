@@ -7,14 +7,14 @@ const SelcetedClass = () => {
     const { user } = useAuth();
     const [selectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/selectedClass/${user?.email}`)
+        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setSelectedClasses(data);
             });
     }, [user]);
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/selectedClass/${id}`, {
+        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())
@@ -55,7 +55,6 @@ const SelcetedClass = () => {
                             </div>
                             <div className='w-96'>
                                 <h2 className="text-xl font-bold">{classItem.name}</h2>
-                                <p className="text-gray-500">Email: {classItem.email}</p>
                             </div>
                             <div className='flex gap-4'>
                                 <Link to={`/dashboard/pay/${classItem._id}`} className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white font-bold py-2 px-8 rounded">

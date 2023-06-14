@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import './PayForm.css';
+import Swal from 'sweetalert2';
 const PayForm = ({ Price, selectedClasses }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -13,7 +14,7 @@ const PayForm = ({ Price, selectedClasses }) => {
         if (Price > 0) {
             const createPaymentIntent = async () => {
                 try {
-                    const response = await fetch('http://localhost:5000/create-payment-intent', {
+                    const response = await fetch('https://summer-camp-server-silk.vercel.app/create-payment-intent', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -70,7 +71,54 @@ const PayForm = ({ Price, selectedClasses }) => {
         }
         setProcessing(false)
         if (paymentIntent.status === 'succeeded') {
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                Price,
+                date: new Date(),
+                selectedItems: selectedClasses.map(item => item._id),
+                selectedClass: selectedClasses.map(item => item.selectedClassId),
+                selectedNames: selectedClasses.map(item => item.name)
+            };
 
+            fetch('https://summer-camp-server-silk.vercel.app/payments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payment),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${selectedClasses.map(item => item._id)}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ payment: 'paid' })
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                console.log(data);
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Payment Successful',
+                                    text: 'Your payment has been processed successfully.',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                  }).then(() => {
+                                    const cardElement = elements.getElement(CardElement);
+                                    cardElement.clear();
+                                  });
+                            })
+                            .catch((error) => console.log(error));
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     };
     return (
