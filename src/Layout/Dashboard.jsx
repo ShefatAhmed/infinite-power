@@ -14,29 +14,32 @@ const Dashboard = () => {
                 </div>
                 <div className='flex justify-around font-bold uppercase mt-8'>
                     <div className='flex gap-3'>
-                        <Link to="/dashboard/selectedClass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Selected Classes</Link>
-                        <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
-                        <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
                         {
-                            isAdmin && <>
-                                <Link to="/dashboard/manageUser" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Users</Link>
-                            </>
+                            isAdmin && (
+                                <>
+                                    <Link to="/dashboard/manageUser" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Users</Link>
+                                    <Link to="/dashboard/manageclasses" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Classes</Link>
+                                </>
+                            )
                         }
                         {
-                            isAdmin && <>
-                                <Link to="/dashboard/manageclasses" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Manage Classes</Link>
-                            </>
+                            isInstructor && (
+                                <>
+                                    <Link to="/dashboard/myclasses" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Classes</Link>
+                                    <Link to="/dashboard/addclass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Add Classes</Link>
+                                </>
+                            )
                         }
                         {
-                            isInstructor && <>
-                                <Link to="/dashboard/addclass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Add Classes</Link>
-                            </>
+                            !(isAdmin || isInstructor) && (
+                                <>
+                                    <Link to="/dashboard/selectedClass" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Selected Classes</Link>
+                                    <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Enrolled Classes</Link>
+                                    <Link className='bg-white px-3 py-1 rounded border-sky-500 border-2'>Payment History</Link>
+                                </>
+                            )
                         }
-                        {
-                            isInstructor && <>
-                                <Link to="/dashboard/myclasses" className='bg-white px-3 py-1 rounded border-sky-500 border-2'>My Classes</Link>
-                            </>
-                        }
+
                     </div>
                     <Link to="/"><i className="fa-solid fa-house-chimney"></i> Home</Link>
                 </div>

@@ -14,31 +14,46 @@ const MyClasses = () => {
     }, [user?.email]);
     return (
         <div className="flex flex-col items-center my-16">
-            <h1 className="text-2xl font-bold my-4 uppercase">The classes you added are shown here</h1>
-            <div className='w-10/12'>
-                {myClasses.map(item => (
-                    <div
-                        key={item._id}
-                        className="flex items-center justify-evenly bg-white rounded-lg p-4 shadow-md"
-                    >
-                        <img src={item.image} className="w-12 h-12 rounded-full" />
-                        <h3>{item.name}</h3>
-                        <h3 className="text-xs text-sky-500 font-semibold">{item.Status}</h3>
-                        <p>Total Enrolled Students: {item.number_of_student}</p>
-                        {item.feedback === 'pending' && (
-                            <p className='text-center'>
-                                <span>Feedback</span> <br />
-                                {item.feedback}
-                            </p>
-                        )}
-                        <button className="px-5 py-2 bg-gradient-to-l from-fuchsia-500 to-blue-500 text-white font-bold rounded">
-                            Update
-                        </button>
-                    </div>
-                ))}
-                {
-                    myClasses.length === 0 && <p className='text-4xl font-bold text-center'>You have not added any classes yet</p>
-                }
+            <h1 className='text-center font-bold text-xl my-4 uppercase'>Manage Classes</h1>
+            <div className="overflow-x-auto w-[1000px] bg-gradient-to-r from-purple-50 to-red-50">
+                <table className="table">
+                    <thead>
+                        <th></th>
+                        <th>Class Name</th>
+                        <th>Status</th>
+                        <th className='text-center'>Total Enrolled Students</th>
+                        <th className='text-center'>Feedback</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {myClasses.map(item => (
+                            <tr key={item._id}>
+                                <td>
+                                    <img src={item.image} className="w-12 h-12 rounded-full" alt="Class" />
+                                </td>
+                                <td>
+                                    <h3>{item.name}</h3>
+                                </td>
+                                <td>
+                                    <h3 className="text-xs text-sky-500 font-semibold">{item.Status}</h3>
+                                </td>
+                                <td>
+                                    <p className='text-center'>{item.number_of_student}</p>
+                                </td>
+                                <td>
+                                    <p className='text-center'>
+                                        {item.feedback}
+                                    </p>
+                                </td>
+                                <td>
+                                    <button className="px-5 py-2 bg-gradient-to-l from-fuchsia-500 to-blue-500 text-white font-bold rounded">
+                                        Update
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

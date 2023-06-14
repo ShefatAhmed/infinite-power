@@ -2,13 +2,13 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import './PayForm.css';
-const PayForm = ({ Price }) => {
+const PayForm = ({ Price, selectedClasses }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const { user } = useAuth();
-
+    const [processing, setProcessing] = useState(false);
     useEffect(() => {
         if (Price > 0) {
             const createPaymentIntent = async () => {
@@ -23,7 +23,6 @@ const PayForm = ({ Price }) => {
 
                     if (response.ok) {
                         const data = await response.json();
-                        // console.log(data.clientSecret);
                         setClientSecret(data.clientSecret);
                     } else {
                         console.error('Failed to create payment intent');
@@ -45,19 +44,17 @@ const PayForm = ({ Price }) => {
         if (card == null) {
             return;
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
 
         if (error) {
-            console.log('[error]', error);
             setCardError(error.message);
         } else {
-            // console.log('[PaymentMethod]', paymentMethod);
             setCardError('');
         }
-
+        setProcessing(true)
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -67,6 +64,14 @@ const PayForm = ({ Price }) => {
                 },
             },
         });
+        console.log(paymentIntent);
+        if (confirmError) {
+            console.log(confirmError);
+        }
+        setProcessing(false)
+        if (paymentIntent.status === 'succeeded') {
+
+        }
     };
     return (
         <>
@@ -98,12 +103,12 @@ const PayForm = ({ Price }) => {
                         <button
                             className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white font-bold py-2 px-8 rounded disabled:pointer-events-none"
                             type="submit"
-                            disabled={!stripe || !clientSecret}
+                            disabled={!stripe || !clientSecret || processing}
                         >
                             Pay Now
                         </button>
                     </form>
-                    {cardError && <p className="text-red-600 mt-4">{cardError}</p>}
+                    {cardError && <p className="text-red-400 mt-4">{cardError}</p>}
                 </div>
             </div>
         </>

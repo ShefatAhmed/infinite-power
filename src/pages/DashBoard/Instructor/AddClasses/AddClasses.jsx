@@ -35,11 +35,13 @@ const AddClasses = () => {
         event.target.reset('');
     }
     return (
-        <div className="container mx-auto px-4 py-16">
+        <div className='py-16'>
             <h2 className="text-2xl text-center font-bold mb-8 uppercase">Add A Class</h2>
+        <div className="container mx-auto px-4">
+            
             <form
                 onSubmit={handleSubmit}
-                className="max-w-lg mx-auto bg-gradient-to-r from-purple-50 to-red-50 rounded-lg p-8 shadow-lg"
+                className="w-6/12 mx-auto bg-gradient-to-r from-purple-50 to-red-50 rounded-lg p-8 shadow-lg"
             >
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Class name</label>
@@ -94,6 +96,7 @@ const AddClasses = () => {
                     </button>
                 </div>
             </form>
+        </div>
         </div>
     );
 };
