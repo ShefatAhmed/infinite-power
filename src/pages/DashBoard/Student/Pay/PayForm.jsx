@@ -14,7 +14,7 @@ const PayForm = ({ Price, selectedClasses, id }) => {
         if (Price > 0) {
             const createPaymentIntent = async () => {
                 try {
-                    const response = await fetch('http://localhost:5000/create-payment-intent', {
+                    const response = await fetch('https://summer-camp-server-silk.vercel.app/create-payment-intent', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const PayForm = ({ Price, selectedClasses, id }) => {
                 image: selectedClasses.map((item) => item.image)
             };
 
-            fetch('http://localhost:5000/payments', {
+            fetch('https://summer-camp-server-silk.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const PayForm = ({ Price, selectedClasses, id }) => {
                 .then((data) => {
                     console.log(data);
                     if (data.insertedId) {
-                        fetch(`http://localhost:5000/selectedClass/${selectedClasses.map((item) => item._id)}`, {
+                        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${selectedClasses.map((item) => item._id)}`, {
                             method: 'DELETE',
                         })
                             .then((res) => res.json())
@@ -104,7 +104,7 @@ const PayForm = ({ Price, selectedClasses, id }) => {
                                 console.error('Error:', error);
                             });
 
-                        fetch(`http://localhost:5000/classes/${selectedClasses.map((item) => item.selectedClassId)}`, {
+                        fetch(`https://summer-camp-server-silk.vercel.app/classes/${selectedClasses.map((item) => item.selectedClassId)}`, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json',

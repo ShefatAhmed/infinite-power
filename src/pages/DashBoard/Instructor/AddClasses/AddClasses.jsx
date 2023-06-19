@@ -15,7 +15,7 @@ const AddClasses = () => {
         const Price = parseFloat(form.Price.value);
         const newClass = {image, name, instructor_name, instructor_email, number_of_student : 0, Available_seats, Price, Status: "pending", feedback: "pending", added_by: "instructor" };
 
-        fetch('http://localhost:5000/classes', {
+        fetch('https://summer-camp-server-silk.vercel.app/classes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -6,7 +6,7 @@ const ManageUser = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://summer-camp-server-silk.vercel.app/users')
             .then((res) => res.json())
             .then((data) => {
                 setUsers(data);
@@ -14,7 +14,7 @@ const ManageUser = () => {
     }, [users]);
 
     const handleMakeInstructor = (user) => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://summer-camp-server-silk.vercel.app/users/instructor/${user._id}`, {
           method: 'PATCH'
         })
           .then((res) => res.json())
@@ -27,7 +27,7 @@ const ManageUser = () => {
                 instructor_name: user.name,
                 instructor_email: user.email
               };
-              fetch('http://localhost:5000/addinstructor', {
+              fetch('https://summer-camp-server-silk.vercel.app/addinstructor', {
                 method: 'POST',
                 headers: {
                   'content-type': 'application/json'
@@ -51,7 +51,7 @@ const ManageUser = () => {
       
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://summer-camp-server-silk.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

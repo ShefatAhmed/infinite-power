@@ -11,7 +11,7 @@ const Pay = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/selectedClass/${user?.email}`)
+        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 const filteredData = data.filter((item) => item._id === id);
