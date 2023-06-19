@@ -7,14 +7,14 @@ const SelcetedClass = () => {
     const { user } = useAuth();
     const [selectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
-        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${user?.email}`)
+        fetch(`http://localhost:5000/selectedClass/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setSelectedClasses(data);
             });
     }, [user]);
     const handleDelete = (id) => {
-        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${id}`, {
+        fetch(`http://localhost:5000/selectedClass/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())

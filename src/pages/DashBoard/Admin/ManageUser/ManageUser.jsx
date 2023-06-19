@@ -6,33 +6,52 @@ const ManageUser = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('https://summer-camp-server-silk.vercel.app/users')
+        fetch('http://localhost:5000/users')
             .then((res) => res.json())
             .then((data) => {
                 setUsers(data);
             });
     }, [users]);
 
-    const handleMakeInstructor = user => {
-        fetch(`https://summer-camp-server-silk.vercel.app/users/instructor/${user._id}`, {
-            method: 'PATCH'
+    const handleMakeInstructor = (user) => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+          method: 'PATCH'
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${user.name} is an instructor from now on`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            })
-    };
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount) {
+              const instructor = {
+                _id: user._id,
+                image: user.image,
+                number_of_students: 50,
+                instructor_name: user.name,
+                instructor_email: user.email
+              };
+              fetch('http://localhost:5000/addinstructor', {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json'
+                },
+                body: JSON.stringify(instructor)
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data);
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${user.name} is now an instructor`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                });
+            }
+          });
+      };
+      
 
     const handleMakeAdmin = user => {
-        fetch(`https://summer-camp-server-silk.vercel.app/users/admin/${user._id}`, {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

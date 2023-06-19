@@ -4,7 +4,7 @@ const Instructors = () => {
     const [instructors, setinstructors] = useState([]);
 
     useEffect(() => {
-        fetch('https://summer-camp-server-silk.vercel.app/instructor')
+        fetch('http://localhost:5000/instructor')
             .then((res) => res.json())
             .then((data) => {
                 setinstructors(data);
@@ -12,7 +12,7 @@ const Instructors = () => {
             .catch((error) => console.log(error));
     }, []);
     return (
-        <div className="flex flex-col items-center my-16">
+        <div className="flex flex-col items-center my-16 pb-24">
             <h1 className="text-2xl font-bold my-4">Meet Our Instructors</h1>
             <div className="flex flex-wrap justify-center">
                 {instructors.map((instructor) => (

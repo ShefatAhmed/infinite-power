@@ -17,7 +17,7 @@ const ClassesPage = ({ classItem }) => {
         console.log(classItem);
         if (user && user.email) {
             const selectedClass = { selectedClassId: _id, name, image, Price, email: user.email, payment: "pending" }
-            fetch('https://summer-camp-server-silk.vercel.app/selectedClass', {
+            fetch('http://localhost:5000/selectedClass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

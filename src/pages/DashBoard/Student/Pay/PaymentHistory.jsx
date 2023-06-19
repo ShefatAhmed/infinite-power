@@ -4,11 +4,10 @@ const PaymentHistory = () => {
     const { user } = useAuth();
     const [paymentsHistory, setPaymentsHistory] = useState([]);
     useEffect(() => {
-        fetch(`https://summer-camp-server-silk.vercel.app/paymenthistory/${user?.email}`)
+        fetch(`http://localhost:5000/paymenthistory/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setPaymentsHistory(data);
-                // console.log(data[0]["selectedNames"]);
             });
     }, [user]);
     return (

@@ -6,7 +6,7 @@ const MyClasses = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`https://summer-camp-server-silk.vercel.app/myclasses/${user?.email}`)
+        fetch(`http://localhost:5000/myclasses/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 setMyClasses(data);
@@ -18,12 +18,14 @@ const MyClasses = () => {
             <div className="overflow-x-auto w-[1000px] bg-gradient-to-r from-purple-50 to-red-50">
                 <table className="table">
                     <thead>
+                        <tr>
                         <th></th>
                         <th>Class Name</th>
                         <th>Status</th>
                         <th className='text-center'>Total Enrolled Students</th>
                         <th className='text-center'>Feedback</th>
                         <th></th>
+                        </tr>
                     </thead>
                     <tbody>
                         {myClasses.map(item => (

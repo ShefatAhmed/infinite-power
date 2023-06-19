@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import './PayForm.css';
 import Swal from 'sweetalert2';
-const PayForm = ({ Price, selectedClasses }) => {
+const PayForm = ({ Price, selectedClasses, id }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -14,7 +14,7 @@ const PayForm = ({ Price, selectedClasses }) => {
         if (Price > 0) {
             const createPaymentIntent = async () => {
                 try {
-                    const response = await fetch('https://summer-camp-server-silk.vercel.app/create-payment-intent', {
+                    const response = await fetch('http://localhost:5000/create-payment-intent', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -76,47 +76,63 @@ const PayForm = ({ Price, selectedClasses }) => {
                 transactionId: paymentIntent.id,
                 Price,
                 date: new Date(),
-                selectedItems: selectedClasses.map(item => item._id),
-                selectedClass: selectedClasses.map(item => item.selectedClassId),
-                selectedNames: selectedClasses.map(item => item.name)
+                selectedItems: selectedClasses.map((item) => item._id),
+                selectedClass: selectedClasses.map((item) => item.selectedClassId),
+                selectedNames: selectedClasses.map((item) => item.name),
+                image: selectedClasses.map((item) => item.image)
             };
 
-            fetch('https://summer-camp-server-silk.vercel.app/payments', {
+            fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(payment),
             })
-                .then(response => response.json())
-                .then(data => {
+                .then((response) => response.json())
+                .then((data) => {
                     console.log(data);
                     if (data.insertedId) {
-                        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${selectedClasses.map(item => item._id)}`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ payment: 'paid' })
+                        fetch(`http://localhost:5000/selectedClass/${selectedClasses.map((item) => item._id)}`, {
+                            method: 'DELETE',
                         })
                             .then((res) => res.json())
                             .then((data) => {
                                 console.log(data);
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Payment Successful',
-                                    text: 'Your payment has been processed successfully.',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                  }).then(() => {
-                                    const cardElement = elements.getElement(CardElement);
-                                    cardElement.clear();
-                                  });
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+
+                        fetch(`http://localhost:5000/classes/${selectedClasses.map((item) => item.selectedClassId)}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ selectedClasses }),
+                        })
+                            .then((res) => {
+                                console.log(res);
+                                return res.json();
+                            })
+                            .then((data) => {
+                                console.log(data);
                             })
                             .catch((error) => console.log(error));
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Payment Successful',
+                            text: 'Your payment has been processed successfully.',
+                            showConfirmButton: false,
+                            timer: 2000,
+                        }).then(() => {
+                            const cardElement = elements.getElement(CardElement);
+                            cardElement.clear();
+                        });
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.log(error);
                 });
         }

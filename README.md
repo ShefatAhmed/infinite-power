@@ -5,4 +5,4 @@ Infinite Power
 # Payment Method is stripe. 
 # Basically this website is for summer camp school. This website is very important for this school for student admission
 React Vite, Node.js MongoDB and Express are used to build this website.
-Website Link: https://chic-gumption-d12982.netlify.app/
+Website Link: https://eclectic-lolly-80d18b.netlify.app/

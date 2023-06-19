@@ -11,7 +11,7 @@ const Pay = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
 
     useEffect(() => {
-        fetch(`https://summer-camp-server-silk.vercel.app/selectedClass/${user?.email}`)
+        fetch(`http://localhost:5000/selectedClass/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                 const filteredData = data.filter((item) => item._id === id);
@@ -22,7 +22,7 @@ const Pay = () => {
     return (
         <div>
             <Elements stripe={stripePromise}>
-                <PayForm selectedClasses={selectedClasses} Price={Price}></PayForm>
+                <PayForm selectedClasses={selectedClasses} Price={Price} id={id}></PayForm>
             </Elements>
         </div>
     );

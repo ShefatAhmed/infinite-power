@@ -4,7 +4,7 @@ const PopularInstractor = () => {
     const [popularInstractor, setPopularInstractor] = useState([]);
 
     useEffect(() => {
-        fetch('https://summer-camp-server-silk.vercel.app/popularInstractor')
+        fetch('http://localhost:5000/popularInstractor')
             .then((res) => res.json())
             .then((data) => {
                 setPopularInstractor(data);
@@ -18,7 +18,7 @@ const PopularInstractor = () => {
                 <p className="text-lg font-bold text-gray-500 mb-8 md:px-0 px-5">Infinite Power Martial Arts School houses certified instructors with vast expertise and exceptional qualifications</p>
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6">
-                {popularInstractor.slice(0, 6).map((instructor) => (
+                {popularInstractor.map((instructor) => (
                     <div key={instructor._id} className="flex flex-col items-center">
                         <div className="w-48 h-48 bg-gray-300 overflow-hidden rounded">
                             <img src={instructor.image} alt={instructor.name} className="w-full h-full object-cover" />

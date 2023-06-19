@@ -5,7 +5,7 @@ const Classes = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect(() => {
-        fetch('https://summer-camp-server-silk.vercel.app/classes')
+        fetch('http://localhost:5000/classes')
             .then((res) => res.json())
             .then((data) => {
                 const filteredData = data.filter((classItem) => classItem.Status === "approve");
