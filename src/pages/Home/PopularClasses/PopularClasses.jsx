@@ -14,8 +14,8 @@ const PopularClasses = () => {
     return (
         <div className='pt-20 pb-8'>
             <div className="text-center py-1">
-                <h2 className="text-3xl font-bold mb-1 uppercase underline text-gray-400">Popular Class</h2>
-                <p className="text-lg font-bold text-gray-500 mb-8 md:px-0 px-8">Learn the fundamentals of self-defense and build your strength and agility in our Popular Class</p>
+                <h2 className="text-3xl font-bold mb-1 uppercase  text-gray-400">Popular Class</h2>
+                <p className="text-lg font-bold mb-8 md:px-0 px-8">Learn the fundamentals of self-defense and build your strength and agility in our Popular Class</p>
             </div>
             <div className='flex flex-wrap px-16'>
                 {popularClasses.slice(0, 6).map((classItem) => (
