@@ -11,7 +11,6 @@ const BuyBooks = () => {
         { id: 7, name: 'Kung Fu', url: 'http://artkombat.like-themes.com/wp-content/uploads/2018/09/blog_09-755x503.jpg' },
         { id: 8, name: 'Jujutsu', url: 'http://artkombat.like-themes.com/wp-content/uploads/2018/09/blog_10-755x503.jpg' },
     ];
-    
     return (
         <div className="py-10">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
