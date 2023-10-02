@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
 
@@ -11,6 +12,10 @@ const PopularClasses = () => {
             })
             .catch((error) => console.log(error));
     }, []);
+
+    useEffect(() => {
+        Aos.init({duration: 1000});
+    })
     return (
         <div className='pt-20 pb-8'>
             <div className="text-center py-1">
@@ -29,6 +34,7 @@ const PopularClasses = () => {
                                     src={classItem.image}
                                     alt={classItem.name}
                                     className='object-cover rounded-t-lg'
+                                    data-aos="zoom-out"
                                 />
                             </div>
                             <div className='p-4 flex-1'>

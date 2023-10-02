@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JoinClass = () => {
     return (
@@ -20,7 +21,7 @@ const JoinClass = () => {
                             <h2 className="card-title text-xl font-semibold mb-2">Karate <br /> for Kids</h2>
                             <p>Pellentesque congue quis massa sagittis posuere.</p>
                             <div className="card-actions justify-end mt-4">
-                                <button className="common-button w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 uppercase text-bold rounded-lg">Join Class</button>
+                                <Link to="/classes" className="common-button w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 uppercase text-bold rounded-lg">Join Class</Link>
                             </div>
                         </div>
                         <figure>
@@ -32,7 +33,7 @@ const JoinClass = () => {
                             <h2 className="card-title text-xl font-semibold mb-2">Martial Arts <br /> for Adults</h2>
                             <p className="text-gray-600">Curabitur consectetur egestas arcu non bibendum.</p>
                             <div className="card-actions justify-end mt-4">
-                                <button className="common-button w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 uppercase text-bold rounded-lg">Join Class</button>
+                                <Link to="/classes" className="common-button w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-800 hover:to-pink-800 text-white text-white font-medium py-2 px-4 uppercase text-bold rounded-lg" >Join Class</Link>
                             </div>
                         </div>
                         <figure>

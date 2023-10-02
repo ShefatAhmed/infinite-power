@@ -1,10 +1,15 @@
-import React from 'react';
+import Aos from 'aos';
+import React, { useEffect } from 'react';
+import 'aos/dist/aos.css';
 
 const Contact = () => {
+    useEffect(() => {
+        Aos.init({duration: 3000});
+    })
     return (
         <div className='flex flex-col md:flex-row justify-center items-center p-5 md:p-10'>
             <div className='md:w-1/3 pr-6'>
-                <img className='mx-auto md:mb-0 md:h-full' src="http://artkombat.like-themes.com/wp-content/uploads/2018/10/karate-contacts.png" alt="" />
+                <img className='mx-auto md:mb-0 md:h-full' src="http://artkombat.like-themes.com/wp-content/uploads/2018/10/karate-contacts.png" alt=""  data-aos="flip-down" />
             </div>
             <div className='md:w-2/3'>
                 <div className='w-full max-w-md bg-gray-100 rounded-lg shadow-lg p-6'>

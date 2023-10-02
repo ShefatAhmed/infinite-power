@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const BuyBooks = () => {
     const images = [
@@ -11,6 +13,9 @@ const BuyBooks = () => {
         { id: 7, name: 'Kung Fu', url: 'http://artkombat.like-themes.com/wp-content/uploads/2018/09/blog_09-755x503.jpg' },
         { id: 8, name: 'Jujutsu', url: 'http://artkombat.like-themes.com/wp-content/uploads/2018/09/blog_10-755x503.jpg' },
     ];
+    useEffect(() => {
+        Aos.init({duration: 1000});
+    })
     return (
         <div className="py-10">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +31,7 @@ const BuyBooks = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
                     {images.map((image) => (
                         <div key={image.id} className="flex flex-col items-center p-2 sm:p-4">
-                            <img src={image.url} alt={image.name} className="w-56 sm:w-64 h-56 sm:h-64 rounded mb-2" />
+                            <img src={image.url} alt={image.name} className="w-56 sm:w-64 h-56 sm:h-64 rounded mb-2" data-aos="zoom-out"/>
                             <p className="text-gray-700 font-bold text-center uppercase">{image.name}</p>
                         </div>
                     ))}
