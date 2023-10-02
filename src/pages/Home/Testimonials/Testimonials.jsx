@@ -7,19 +7,19 @@ const Testimonials = () => {
         {
             id: 1,
             name: 'Anastasia Stone',
-            image: 'http://artkombat.like-themes.com/wp-content/uploads/2018/03/w6-70x70.jpg',
+            image: 'https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/384789411_122120176580035162_8209312730550177095_n.jpg?stp=cp0_dst-jpg&_nc_cat=103&ccb=1-7&_nc_sid=49d041&_nc_ohc=DUxTFnigBYoAX9GL-ES&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfCCj9CN0CzzCu5osmJlM6KBS-Yz6TLnkdB46kAoYILI3A&oe=651F9C89',
             text: 'InfinitePower Karate Training School impresses with its expert instructors, personalized approach for all levels, and commitment to safety. The clean and inviting facility, coupled with a strong sense of camaraderie among students, creates an ideal environment for mastering karate skills while instilling valuable life lessons. Highly recommended for holistic growth.',
         },
         {
             id: 2,
             name: 'Jane Smith',
-            image: 'http://artkombat.like-themes.com/wp-content/uploads/2018/03/w1-70x70.jpg',
+            image: 'https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/383312108_122120176556035162_4451632888694731936_n.jpg?stp=cp0_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=49d041&_nc_ohc=lg9YedEzEYUAX-5C4Ip&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfCCsOwg2elsP0tullIS9-Ph-7UEbOW6SGYFvG0bbCQ2vg&oe=651F7363',
             text: 'InfinitePower Karate Training School stands out as a beacon of excellence. The instructors mastery, tailored instruction, and inclusive ambiance create an unparalleled experience. Safety protocols are meticulously upheld, ensuring a worry-free environment. Beyond karate proficiency, the school cultivates character and unity among students, making it a prime destination for martial arts enthusiasts.',
         },
         {
             id: 3,
             name: 'Alex Johnson',
-            image: 'http://artkombat.like-themes.com/wp-content/uploads/2018/03/w3-70x70.jpg',
+            image: 'https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/384666932_122120176550035162_2354227560748023993_n.jpg?stp=cp0_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=49d041&_nc_ohc=zdSAFeHi1XUAX-PV254&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfAXfG0Rq7AU-ftI6PHzBcnI2DS_qbexuW5AI6Zv14zZQw&oe=651EF26F',
             text: 'Exceptional training institution! The adept instructors offer personalized guidance in a welcoming setting. Emphasizing safety, the facility provides a secure space for holistic development. Beyond skill enhancement, the school fosters camaraderie and character growth among participants. A premier choice for those seeking comprehensive martial arts education.',
         },
     ];

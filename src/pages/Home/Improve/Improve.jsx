@@ -38,7 +38,7 @@ const Improve = () => {
                 </div>
             </div>
             <div className="ml-auto md:mr-8 md:ml-auto md:mb-8 md:mt-0 text-center">
-                <img className="max-w-xs md:max-w-md mx-auto" src="http://artkombat.like-themes.com/wp-content/uploads/2018/10/impove.png" alt="" />
+                <img className="max-w-xs md:max-w-md mx-auto" src="https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/383237278_122119986560035162_3388259139969022579_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=49d041&_nc_ohc=zHQtBC30KBMAX9XQv4H&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfCbeam5dvfGwb4np-lSVDMFqzfnERT64i1E42eyQhtoig&oe=651F7E7A" alt="" />
             </div>
         </div>
     );
