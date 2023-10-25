@@ -19,17 +19,17 @@ const Contact = () => {
                     </div>
                     <div className='mt-6'>
                         <div className='flex items-center mb-4'>
-                            <img className='w-6 h-6 mr-3' src="https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/384780394_122120167688035162_2693285122082742855_n.jpg?stp=cp0_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_ohc=NFWYyvjuk5UAX9YjFaC&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfDe_GAm2phx0JMfwfCSSCMAoAY9UQiSJHKCPLH84SWR_Q&oe=651FC106" alt="" />
+                            <img className='w-6 h-6 mr-3' src="https://i.ibb.co/BV3xS6b/karate-contact-1.png" alt="" />
                             <p><span className='font-bold'>Address:</span><br />5460 Kuptola, Mithapukur
                                 Gaibandha, Bangladesh
                             </p>
                         </div>
                         <div className='flex items-center mb-4'>
-                            <img className='w-6 h-6 mr-3' src="https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/384750454_122120168120035162_553018901845343168_n.jpg?stp=cp0_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=49d041&_nc_ohc=q_KI76EU4mMAX9ZG7GC&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfANqwV4Tj05Ikok4oRBq27mDHyCNf_Rt-pw3CZaQOLgNQ&oe=65200AE2" alt="" />
+                            <img className='w-6 h-6 mr-3' src="https://i.ibb.co/Y7Xw2PH/karate-contact-2.png" alt="" />
                             <p><span className='font-bold'>Contact phones:</span><br />+880113-456-789</p>
                         </div>
                         <div className='flex items-center'>
-                            <img className='w-6 h-6 mr-3' src="https://scontent.fjsr11-1.fna.fbcdn.net/v/t39.30808-6/384780394_122120167688035162_2693285122082742855_n.jpg?stp=cp0_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=49d041&_nc_ohc=NFWYyvjuk5UAX9YjFaC&_nc_ht=scontent.fjsr11-1.fna&oh=00_AfDe_GAm2phx0JMfwfCSSCMAoAY9UQiSJHKCPLH84SWR_Q&oe=651FC106" alt="" />
+                            <img className='w-6 h-6 mr-3' src="https://i.ibb.co/S3HsZcT/email-5-xxl.png" alt="" />
                             <p><span className='font-bold'>Email address:</span><br />Email: contact@infinitepower.com</p>
                         </div>
                     </div>
