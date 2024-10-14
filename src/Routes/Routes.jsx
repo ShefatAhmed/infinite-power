@@ -21,6 +21,7 @@ import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses"
 import EnrolledClasses from "../pages/DashBoard/Student/EnrolledClass/EnrolledClasses";
 import PaymentHistory from "../pages/DashBoard/Student/Pay/PaymentHistory";
 import Erropage from "../Components/Errorpage/Erropage";
+import DashboardLayout from "../Layout/DashboardLayout";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
             {
                 path: 'dashboardhome',

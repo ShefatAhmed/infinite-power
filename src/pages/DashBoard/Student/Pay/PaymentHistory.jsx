@@ -11,25 +11,25 @@ const PaymentHistory = () => {
             });
     }, [user]);
     return (
-        <div className="flex flex-col items-center my-16">
-            <h1 className='text-center font-bold text-xl my-4 uppercase'>Payment History</h1>
-            <div className="overflow-x-auto">
-                <table className="table">
+        <div className="flex flex-col items-center my-16 overflow-hidden mx-5">
+            <h1 className="text-center font-bold text-xl my-4 uppercase">Payment History</h1>
+            <div className="overflow-x-auto w-full">
+                <table className="min-w-full table-auto">
                     <thead>
-                        <tr>
-                            <th>Paid Classes</th>
-                            <th className="text-right">Price</th>
-                            <th>transactionId</th>
-                            <th>Date & Time</th>
+                        <tr className="bg-gray-200">
+                            <th className="px-4 py-2 text-left">Paid Classes</th>
+                            <th className="px-4 py-2 text-right">Price</th>
+                            <th className="px-4 py-2">Transaction ID</th>
+                            <th className="px-4 py-2">Date & Time</th>
                         </tr>
                     </thead>
                     <tbody>
                         {paymentsHistory.map((paymentHistory) => (
-                            <tr key={paymentHistory._id}>
-                                <td>{paymentHistory.selectedNames}</td>
-                                <td className="text-right">${paymentHistory.Price}</td>
-                                <td>{paymentHistory.transactionId}</td>
-                                <td>{paymentHistory.date}</td>
+                            <tr key={paymentHistory._id} className="border-t">
+                                <td className="px-4 py-2">{paymentHistory.selectedNames}</td>
+                                <td className="px-4 py-2 text-right">${paymentHistory.Price}</td>
+                                <td className="px-4 py-2">{paymentHistory.transactionId}</td>
+                                <td className="px-4 py-2">{paymentHistory.date}</td>
                             </tr>
                         ))}
                     </tbody>

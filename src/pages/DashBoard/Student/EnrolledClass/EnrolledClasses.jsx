@@ -13,31 +13,31 @@ const EnrolledClasses = () => {
     }, [user]);
     return (
         <div className="flex flex-col items-center my-16">
-            <h1 className="text-2xl font-bold my-4 uppercase">All the classes you have selected are shown here</h1>
-            <div className='w-10/12'>
+            <h1 className="text-2xl font-bold my-4 uppercase text-center">All the classes you have selected are shown here</h1>
+            <div className='w-full max-w-4xl overflow-x-auto'>
                 {enrolledClasses.map((enrolledClass) => (
-                        <div
-                            key={enrolledClass._id}
-                            className=" shadow-lg bg-white m-4 transition duration-300 transform hover:scale-105 flex items-center  justify-between"
-                        >
-                            <div>
-                                <img src={enrolledClass.image} alt="" className="w-16 h-16" />
-                            </div>
-                            <div>
-                                <h1 className='text-xs font-bold text-sky-500'>paid</h1>
-                            </div>
-                            <div className='w-96'>
-                                <h2 className="text-xl font-bold">{enrolledClass.selectedNames}</h2>
-                            </div>
-                            <div className='me-16 font-bold text-red-500'>
-                                <h1>enrolled</h1>
-                            </div>
+                    <div
+                        key={enrolledClass._id}
+                        className="shadow-lg bg-white m-4 transition duration-300 transform hover:scale-105 flex items-center justify-between min-w-[300px] max-w-[400px] gap-5"
+                    >
+                        <div>
+                            <img src={enrolledClass.image} alt="" className="w-16 h-16" />
                         </div>
-                    ))}
+                        <div>
+                            <h1 className='text-xs font-bold text-sky-500'>paid</h1>
+                        </div>
+                        <div className='flex-grow mx-4'>
+                            <h2 className="text-lg font-bold">{enrolledClass.selectedNames}</h2>
+                        </div>
+                        <div className='font-bold text-red-500'>
+                            <h1>enrolled</h1>
+                        </div>
+                    </div>
+                ))}
             </div>
             <div>
                 {
-                    enrolledClasses.length == 0 && <p className='text-4xl font-bold'>You are not enrolled in any classes yet</p>
+                    enrolledClasses.length === 0 && <p className='text-4xl font-bold text-center'>You are not enrolled in any classes yet</p>
                 }
             </div>
         </div>
